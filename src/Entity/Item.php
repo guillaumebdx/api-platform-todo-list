@@ -7,12 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
  * @ApiResource(attributes={"filters"={"item.category"}})
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  * @ApiFilter(SearchFilter::class, properties={"category": "exact"})
  * @ApiFilter(BooleanFilter::class, properties={"isChecked"})
+ * @ApiFilter(OrderFilter::class, properties={"isChecked"}, arguments={"orderParameterName"="order"})
  *
  */
 class Item
